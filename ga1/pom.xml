@@ -31,7 +31,7 @@
 
     <properties>
         <!-- Liferay artifact versions -->
-        <version.liferay.ant.bnd>2.0.19</version.liferay.ant.bnd>
+        <version.liferay.ant.bnd>2.0.28</version.liferay.ant.bnd>
         <version.liferay.portal.impl>2.5.0</version.liferay.portal.impl>
         <version.liferay.portal.kernel>2.6.0</version.liferay.portal.kernel>
         <version.liferay.util.bridges>2.0.1</version.liferay.util.bridges>
@@ -51,9 +51,9 @@
         <version.javax.validation>1.1.0.Final</version.javax.validation>
 
         <!-- OSGi artifacts versions -->
-        <version.bndlib>3.1.0</version.bndlib>
-        <version.bndannotation>2.4.0</version.bndannotation>
-        <version.osgi>5.0.0</version.osgi>
+        <version.bndlib>3.2.0</version.bndlib>
+        <version.osgi>6.0.0</version.osgi>
+        <version.osgi.annotation>6.0.1</version.osgi.annotation>
     </properties>
 
     <dependencyManagement>
@@ -61,6 +61,12 @@
         <dependencies>
 
             <!-- Liferay -->
+            <!--
+            Reference Maven coordinates taken from
+            liferay-dxp-digital-enterprise-maven-7.0-ga1-20160617092557801.zip, build.xml and
+            https://github.com/liferay/liferay-blade-samples/blob/master/maven/blade.portlet.osgiapi/pom.xml
+            https://github.com/liferay/liferay-blade-samples/blob/master/maven/parent.felix.bundle.plugin/pom.xml
+            -->
 
             <dependency>
                 <groupId>com.liferay</groupId>
@@ -111,6 +117,10 @@
             </dependency>
 
             <!-- Java EE -->
+            <!--
+            Reference Maven coordinates taken from the JBoss BOMs:
+            https://github.com/jboss/jboss-javaee-specs
+            -->
 
             <dependency>
                 <groupId>javax.activation</groupId>
@@ -166,7 +176,10 @@
                 <version>${version.org.jboss.spec.javax.websocket}</version>
             </dependency>
 
-            <!-- OSGi / BND -->
+            <!-- BND -->
+            <!--
+            Reference Maven coordinates taken from bndtools' CI: https://bndtools.ci.cloudbees.com/job/bnd.next/577/artifact/dist/bundles/
+            -->
 
             <dependency>
                 <groupId>biz.aQute.bnd</groupId>
@@ -177,24 +190,36 @@
             <dependency>
                 <groupId>biz.aQute.bnd</groupId>
                 <artifactId>biz.aQute.bnd.annotation</artifactId>
-                <version>${version.bndannotation}</version>
+                <version>${version.bndlib}</version>
+            </dependency>
+
+            <!-- OSGi -->
+            <!--
+            Reference Maven coordinates taken from the JARs released by OSGi themselves and the indications provided by
+            http://blog.osgi.org/2015/08/release-6-of-osgi-compendium-osgi.html
+            -->
+
+            <dependency>
+                <groupId>org.osgi</groupId>
+                <artifactId>osgi.annotation</artifactId>
+                <version>${version.osgi.annotation}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.osgi</groupId>
-                <artifactId>org.osgi.compendium</artifactId>
+                <artifactId>osgi.cmpn</artifactId>
                 <version>${version.osgi}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.osgi</groupId>
-                <artifactId>org.osgi.core</artifactId>
+                <artifactId>osgi.core</artifactId>
                 <version>${version.osgi}</version>
             </dependency>
 
             <dependency>
                 <groupId>org.osgi</groupId>
-                <artifactId>org.osgi.enterprise</artifactId>
+                <artifactId>osgi.enterprise</artifactId>
                 <version>${version.osgi}</version>
             </dependency>
 
@@ -301,17 +326,22 @@
 
         <dependency>
             <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.compendium</artifactId>
+            <artifactId>osgi.annotation</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.core</artifactId>
+            <artifactId>osgi.cmpn</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.osgi</groupId>
-            <artifactId>org.osgi.enterprise</artifactId>
+            <artifactId>osgi.core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.osgi</groupId>
+            <artifactId>osgi.enterprise</artifactId>
         </dependency>
 
     </dependencies>
