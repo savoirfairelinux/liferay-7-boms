@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.savoirfairelinux</groupId>
     <artifactId>liferay-7-ee-bom</artifactId>
-    <version>ga1-0.1</version>
+    <version>ga1-0.2</version>
     <packaging>pom</packaging>
     <name>Liferay 7 GA1 BOM</name>
     <description>Bill of materials for Liferay 7 EE GA1</description>
@@ -30,14 +30,63 @@
     </scm>
 
     <properties>
-        <!-- Liferay artifact versions -->
-        <version.liferay.ant.bnd>2.0.28</version.liferay.ant.bnd>
-        <version.liferay.portal.impl>2.5.0</version.liferay.portal.impl>
-        <version.liferay.portal.kernel>2.6.0</version.liferay.portal.kernel>
-        <version.liferay.util.bridges>2.0.1</version.liferay.util.bridges>
-        <version.liferay.util.java>2.2.0</version.liferay.util.java>
-        <version.liferay.util.slf4j>1.0.1</version.liferay.util.slf4j>
-        <version.liferay.util.taglib>2.4.0</version.liferay.util.taglib>
+        <!-- Liferay core versions -->
+        <version.com.liferay.ant.bnd>2.0.28</version.com.liferay.ant.bnd>
+        <version.com.liferay.portal.impl>2.5.0</version.com.liferay.portal.impl>
+        <version.com.liferay.portal.kernel>2.6.0</version.com.liferay.portal.kernel>
+        <version.com.liferay.util.bridges>2.0.1</version.com.liferay.util.bridges>
+        <version.com.liferay.util.java>2.2.0</version.com.liferay.util.java>
+        <version.com.liferay.util.slf4j>1.0.1</version.com.liferay.util.slf4j>
+        <version.com.liferay.util.taglib>2.4.0</version.com.liferay.util.taglib>
+
+        <!-- Liferay module APIs version -->
+        <!--
+            References :
+            * https://dev.liferay.com/develop/reference/-/knowledge_base/7-0/finding-liferay-api-modules
+            * https://repository.liferay.com/nexus/content/repositories/liferay-public-releases/com/liferay/
+            * Liferay DXP LPKGs
+        -->
+
+        <version.com.liferay.application.list.api>2.1.1</version.com.liferay.application.list.api>
+        <version.com.liferay.portal.background.task.api>2.1.0</version.com.liferay.portal.background.task.api>
+        <version.com.liferay.blogs.api>3.0.1</version.com.liferay.blogs.api>
+        <version.com.liferay.bookmarks.api>2.0.1</version.com.liferay.bookmarks.api>
+        <version.com.liferay.calendar.api>2.0.1</version.com.liferay.calendar.api>
+        <version.com.liferay.comment.api>2.0.1</version.com.liferay.comment.api>
+        <version.com.liferay.contacts.api>2.0.3</version.com.liferay.contacts.api>
+        <version.com.liferay.document.library.api>3.0.2</version.com.liferay.document.library.api>
+        <version.com.liferay.dynamic.data.lists.api>2.0.3</version.com.liferay.dynamic.data.lists.api>
+        <version.com.liferay.dynamic.data.mapping.api>3.3.0</version.com.liferay.dynamic.data.mapping.api>
+        <version.com.liferay.exportimport.api>2.1.0</version.com.liferay.exportimport.api>
+        <version.com.liferay.flags.api>2.0.1</version.com.liferay.flags.api>
+        <version.com.liferay.invitation.invite.members.api>2.0.1</version.com.liferay.invitation.invite.members.api>
+        <version.com.liferay.item.selector.api>2.0.1</version.com.liferay.item.selector.api>
+        <version.com.liferay.item.selector.criteria.api>2.0.1</version.com.liferay.item.selector.criteria.api>
+        <version.com.liferay.portal.lock.api>2.0.1</version.com.liferay.portal.lock.api>
+        <version.com.liferay.map.api>2.0.1</version.com.liferay.map.api>
+        <version.com.liferay.marketplace.api>4.1.0</version.com.liferay.marketplace.api>
+        <version.com.liferay.mentions.api>2.0.1</version.com.liferay.mentions.api>
+        <version.com.liferay.message.boards.api>3.0.1</version.com.liferay.message.boards.api>
+        <version.com.liferay.microblogs.api>2.0.1</version.com.liferay.microblogs.api>
+        <version.com.liferay.mobile.device.rules.api>2.0.1</version.com.liferay.mobile.device.rules.api>
+        <version.com.liferay.polls.api>4.0.0</version.com.liferay.polls.api>
+        <version.com.liferay.portal.security.service.access.policy.api>2.0.2</version.com.liferay.portal.security.service.access.policy.api>
+        <version.com.liferay.portal.settings.api>2.0.1</version.com.liferay.portal.settings.api>
+        <version.com.liferay.portlet.configuration.icon.locator.api>2.0.1</version.com.liferay.portlet.configuration.icon.locator.api>
+        <version.com.liferay.portlet.configuration.toolbar.contributor.locator.api>2.0.1</version.com.liferay.portlet.configuration.toolbar.contributor.locator.api>
+        <version.com.liferay.social.privatemessaging.api>2.0.1</version.com.liferay.social.privatemessaging.api>
+        <version.com.liferay.product.navigation.control.menu.api>3.0.0</version.com.liferay.product.navigation.control.menu.api>
+        <version.com.liferay.ratings.api>2.0.1</version.com.liferay.ratings.api>
+        <version.com.liferay.portal.reports.engine.api>3.0.0</version.com.liferay.portal.reports.engine.api>
+        <version.com.liferay.portal.security.audit.api>2.0.1</version.com.liferay.portal.security.audit.api>
+        <version.com.liferay.portal.security.exportimport.api>2.0.1</version.com.liferay.portal.security.exportimport.api>
+        <version.com.liferay.site.api>2.0.2</version.com.liferay.site.api>
+        <version.com.liferay.staging.api>2.0.1</version.com.liferay.staging.api>
+        <version.com.liferay.journal.api>2.1.1</version.com.liferay.journal.api>
+        <version.com.liferay.wiki.api>2.1.0</version.com.liferay.wiki.api>
+        <version.com.liferay.xstream.configurator.api>2.0.1</version.com.liferay.xstream.configurator.api>
+
+        <!-- Misc Java versions -->
         <version.portlet.api>2.0</version.portlet.api>
 
         <!-- Java EE artifacts versions -->
@@ -60,7 +109,7 @@
 
         <dependencies>
 
-            <!-- Liferay -->
+            <!-- Liferay core -->
             <!--
             Reference Maven coordinates taken from
             liferay-dxp-digital-enterprise-maven-7.0-ga1-20160617092557801.zip, build.xml and
@@ -71,44 +120,276 @@
             <dependency>
                 <groupId>com.liferay</groupId>
                 <artifactId>com.liferay.ant.bnd</artifactId>
-                <version>${version.liferay.ant.bnd}</version>
+                <version>${version.com.liferay.ant.bnd}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.liferay.portal</groupId>
                 <artifactId>com.liferay.portal.impl</artifactId>
-                <version>${version.liferay.portal.impl}</version>
+                <version>${version.com.liferay.portal.impl}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.liferay.portal</groupId>
                 <artifactId>com.liferay.portal.kernel</artifactId>
-                <version>${version.liferay.portal.kernel}</version>
+                <version>${version.com.liferay.portal.kernel}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.liferay.portal</groupId>
                 <artifactId>com.liferay.util.bridges</artifactId>
-                <version>${version.liferay.util.bridges}</version>
+                <version>${version.com.liferay.util.bridges}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.liferay.portal</groupId>
                 <artifactId>com.liferay.util.java</artifactId>
-                <version>${version.liferay.util.java}</version>
+                <version>${version.com.liferay.util.java}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.liferay.portal</groupId>
                 <artifactId>com.liferay.util.slf4j</artifactId>
-                <version>${version.liferay.util.slf4j}</version>
+                <version>${version.com.liferay.util.slf4j}</version>
             </dependency>
 
             <dependency>
                 <groupId>com.liferay.portal</groupId>
                 <artifactId>com.liferay.util.taglib</artifactId>
-                <version>${version.liferay.util.taglib}</version>
+                <version>${version.com.liferay.util.taglib}</version>
             </dependency>
+
+            <!-- Liferay API modules -->
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.application.list.api</artifactId>
+                <version>${version.com.liferay.application.list.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.portal.background.task.api</artifactId>
+                <version>${version.com.liferay.portal.background.task.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.blogs.api</artifactId>
+                <version>${version.com.liferay.blogs.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.bookmarks.api</artifactId>
+                <version>${version.com.liferay.bookmarks.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.calendar.api</artifactId>
+                <version>${version.com.liferay.calendar.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.comment.api</artifactId>
+                <version>${version.com.liferay.comment.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.contacts.api</artifactId>
+                <version>${version.com.liferay.contacts.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.document.library.api</artifactId>
+                <version>${version.com.liferay.document.library.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.dynamic.data.lists.api</artifactId>
+                <version>${version.com.liferay.dynamic.data.lists.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.dynamic.data.mapping.api</artifactId>
+                <version>${version.com.liferay.dynamic.data.mapping.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.exportimport.api</artifactId>
+                <version>${version.com.liferay.exportimport.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.flags.api</artifactId>
+                <version>${version.com.liferay.flags.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.invitation.invite.members.api</artifactId>
+                <version>${version.com.liferay.invitation.invite.members.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.item.selector.api</artifactId>
+                <version>${version.com.liferay.item.selector.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.item.selector.criteria.api</artifactId>
+                <version>${version.com.liferay.item.selector.criteria.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.portal.lock.api</artifactId>
+                <version>${version.com.liferay.portal.lock.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.map.api</artifactId>
+                <version>${version.com.liferay.map.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.marketplace.api</artifactId>
+                <version>${version.com.liferay.marketplace.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.mentions.api</artifactId>
+                <version>${version.com.liferay.mentions.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.message.boards.api</artifactId>
+                <version>${version.com.liferay.message.boards.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.microblogs.api</artifactId>
+                <version>${version.com.liferay.microblogs.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.mobile.device.rules.api</artifactId>
+                <version>${version.com.liferay.mobile.device.rules.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.polls.api</artifactId>
+                <version>${version.com.liferay.polls.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.portal.security.service.access.policy.api</artifactId>
+                <version>${version.com.liferay.portal.security.service.access.policy.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.portal.settings.api</artifactId>
+                <version>${version.com.liferay.portal.settings.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.portlet.configuration.icon.locator.api</artifactId>
+                <version>${version.com.liferay.portlet.configuration.icon.locator.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.portlet.configuration.toolbar.contributor.locator.api</artifactId>
+                <version>${version.com.liferay.portlet.configuration.toolbar.contributor.locator.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.social.privatemessaging.api</artifactId>
+                <version>${version.com.liferay.social.privatemessaging.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.product.navigation.control.menu.api</artifactId>
+                <version>${version.com.liferay.product.navigation.control.menu.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.ratings.api</artifactId>
+                <version>${version.com.liferay.ratings.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.portal.reports.engine.api</artifactId>
+                <version>${version.com.liferay.portal.reports.engine.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.portal.security.audit.api</artifactId>
+                <version>${version.com.liferay.portal.security.audit.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.portal.security.exportimport.api</artifactId>
+                <version>${version.com.liferay.portal.security.exportimport.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.site.api</artifactId>
+                <version>${version.com.liferay.site.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.staging.api</artifactId>
+                <version>${version.com.liferay.staging.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.journal.api</artifactId>
+                <version>${version.com.liferay.journal.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.wiki.api</artifactId>
+                <version>${version.com.liferay.wiki.api}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.liferay</groupId>
+                <artifactId>com.liferay.xstream.configurator.api</artifactId>
+                <version>${version.com.liferay.xstream.configurator.api}</version>
+            </dependency>
+
+            <!-- Misc Java -->
 
             <dependency>
                 <groupId>javax.portlet</groupId>
