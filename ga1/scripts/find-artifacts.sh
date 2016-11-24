@@ -19,7 +19,8 @@ doFindArtifacts() {
     MAVEN_REPO_MODULES_URL_ESCAPED=${MAVEN_REPO_MODULES_URL_ESCAPED//:/\\:}
 
     # Empty TMP directory
-    rm -rf ${TMP_FOLDER}/*
+    rm -rf ${TMP_FOLDER}
+    mkdir ${TMP_FOLDER}
 
     mkdir ${TMP_FOLDER}/extracts
     mkdir ${TMP_FOLDER}/downloads
@@ -27,11 +28,9 @@ doFindArtifacts() {
     # Extract OSGi package
     unzip -q -d ${TMP_FOLDER} ${OSGI_ARCHIVE}
 
-    echo "Extracting LPKGs"
     # Find all LPKGs and extract them
     find ${TMP_FOLDER}/${OSGI_FOLDER}/osgi/marketplace -type 'f' -iname '*.lpkg' -exec unzip -q -o -d ${TMP_FOLDER}/extracts '{}' \;
 
-    echo "Removing non-liferay modues"
     # Remove all non-liferay module files
     find ${TMP_FOLDER}/extracts -type 'f' ! -iname 'com.liferay.*.jar' -exec rm '{}' \;
 
@@ -43,46 +42,45 @@ doFindArtifacts() {
             -e "s/\(.*\)\/\(.*\)/${MAVEN_REPO_MODULES_URL_ESCAPED}\/\1\/\2\/\1-\2\.pom\\n${MAVEN_REPO_MODULES_URL_ESCAPED}\/\1\/\2\/\1-\2\.pom.sha1/" \
     )
 
-    echo "Downloading all Maven descriptors (this may take a while)"
     # Download all artifacts
     cd ${TMP_FOLDER}/downloads
     while read -r URL; do
         curl -f --tlsv1.2 -s -O ${URL}
         if [[ $? -ne 0 ]] ; then
-            echo "Cannot download ${URL}"
+            echo "Cannot download ${URL}" >&2
         fi
     done <<< "${URL_LIST}"
-    cd -
+    cd - >> /dev/null
 
+    # Output dependencyManagement XML section based on the Maven metadata
     cd ${TMP_FOLDER}/downloads
     FILE_LIST=$(find -type 'f' -iname '*.pom' | sed -e 's/\.\///')
-    echo "<dependencyManagement>" > ../results.pom
+    echo "<dependencyManagement>"
     while read -r FILE_NAME; do
         echo -n "  ${FILE_NAME}" >> "${FILE_NAME}.sha1"
         sha1sum --status -c "${FILE_NAME}.sha1"
         if [[ $? -ne 0 ]] ; then
-            echo "Checksum mismatch for ${FILE_NAME} - removing it"
+            echo "Checksum mismatch for ${FILE_NAME} - removing it" >&2
             rm "${FILE_NAME}"
             rm "${FILE_NAME}.sha1"
         else
-            echo "    <dependency>" >> ../results.pom
-            echo -n "        <groupId>" >> ../results.pom
-            xmlstarlet sel -N x=${MAVEN_NAMESPACE} -T -t -v '/x:project/x:groupId' ${FILE_NAME} >> ../results.pom
-            echo "</groupId>" >> ../results.pom
+            echo "    <dependency>"
+            echo -n "        <groupId>"
+            xmlstarlet sel -N x=${MAVEN_NAMESPACE} -T -t -v '/x:project/x:groupId' ${FILE_NAME}
+            echo "</groupId>"
 
-            echo -n "        <artifactId>" >> ../results.pom
-            xmlstarlet sel -N x=${MAVEN_NAMESPACE} -T -t -v '/x:project/x:artifactId' ${FILE_NAME} >> ../results.pom
-            echo "</artifactId>" >> ../results.pom
+            echo -n "        <artifactId>"
+            xmlstarlet sel -N x=${MAVEN_NAMESPACE} -T -t -v '/x:project/x:artifactId' ${FILE_NAME}
+            echo "</artifactId>"
 
-            echo -n "        <version>" >> ../results.pom
-            xmlstarlet sel -N x=${MAVEN_NAMESPACE} -T -t -v '/x:project/x:version' ${FILE_NAME} >> ../results.pom
-            echo "</version>" >> ../results.pom
-            echo "    </dependency>" >> ../results.pom
+            echo -n "        <version>"
+            xmlstarlet sel -N x=${MAVEN_NAMESPACE} -T -t -v '/x:project/x:version' ${FILE_NAME}
+            echo "</version>"
+            echo "    </dependency>"
         fi
     done <<< "${FILE_LIST}"
-    echo "</dependencyManagement>" >> ../results.pom
-    echo "Results in ${TMP_FOLDER}/results.pom"
-    cd -
+    echo "</dependencyManagement>"
+    cd - >> /dev/null
 
 }
 
@@ -93,7 +91,7 @@ doUsage() {
     echo "* 'osgi-folder' The name of the folder inside the OSGi package zip"
 }
 
-if [[ "" == "${1}" || "" == "${2}" ]] ; then
+if [[ "" == "${1}" || "" == "${2}" || "--help" == "${1}" || "-h" == "${1}" ]] ; then
     doUsage
 else
     doFindArtifacts ${1} ${2}
