@@ -7,12 +7,9 @@ MAVEN_NAMESPACE="http://maven.apache.org/POM/4.0.0"
 
 # Finds all the artifacts contained in the OSGi modules
 # Parameters:
-# 1. The path to Liferay's OSGi package zip
-# 2. The name of the folder inside the OSGi package zip
-# 3. The temporary folder where stuff will be extracted. By default, '/tmp/find-artifacts'
+# 1. The path leading to Liferay's "osgi" folder
 doFindArtifacts() {
-    OSGI_ARCHIVE="${1}"
-    OSGI_FOLDER="${2}"
+    OSGI_FOLDER="${1}"
 
     TMP_FOLDER_ESCAPED=${TMP_FOLDER//\//\\/}
     MAVEN_REPO_MODULES_URL_ESCAPED=${MAVEN_REPO_MODULES_URL//\//\\/}
@@ -25,11 +22,8 @@ doFindArtifacts() {
     mkdir ${TMP_FOLDER}/extracts
     mkdir ${TMP_FOLDER}/downloads
 
-    # Extract OSGi package
-    unzip -q -d ${TMP_FOLDER} ${OSGI_ARCHIVE}
-
     # Find all LPKGs and extract them
-    find ${TMP_FOLDER}/${OSGI_FOLDER}/osgi/marketplace -type 'f' -iname '*.lpkg' -exec unzip -q -o -d ${TMP_FOLDER}/extracts '{}' \;
+    find ${OSGI_FOLDER}/marketplace -type 'f' -iname '*.lpkg' -exec unzip -q -o -d ${TMP_FOLDER}/extracts '{}' \;
 
     # Remove all non-liferay module files
     find ${TMP_FOLDER}/extracts -type 'f' ! -iname 'com.liferay.*.jar' -exec rm '{}' \;
@@ -85,14 +79,13 @@ doFindArtifacts() {
 }
 
 doUsage() {
-    echo "find-artifacts.sh osgi-file osgi-folder"
+    echo "find-artifacts.sh osgi-folder"
     echo "Where :"
-    echo "* 'osgi-file' is the path to Liferay's OSGi package zip"
-    echo "* 'osgi-folder' The name of the folder inside the OSGi package zip"
+    echo "* 'osgi-folder' The path to Liferay's \"osgi\" folder"
 }
 
-if [[ "" == "${1}" || "" == "${2}" || "--help" == "${1}" || "-h" == "${1}" ]] ; then
+if [[ "" == "${1}" || "--help" == "${1}" || "-h" == "${1}" ]] ; then
     doUsage
 else
-    doFindArtifacts ${1} ${2}
+    doFindArtifacts ${1}
 fi
