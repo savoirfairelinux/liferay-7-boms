@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.savoirfairelinux</groupId>
-    <artifactId>liferay-7-ee-bom</artifactId>
-    <version>sp1-0.1</version>
+    <groupId>com.savoirfairelinux.liferay.bom</groupId>
+    <artifactId>liferay-7-ee-sp1</artifactId>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
-    <name>Liferay 7 SP1 BOM</name>
+    <name>Liferay 7 EE SP1 BOM</name>
     <description>Bill of materials for Liferay 7 EE SP1</description>
 
     <distributionManagement>
