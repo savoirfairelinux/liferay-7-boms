@@ -9,7 +9,7 @@
 
     <distributionManagement>
         <repository>
-            <id>private</id>
+            <id>nexus</id>
             <url>https://nexus.savoirfairelinux.com/repository/liferay-entreprise</url>
         </repository>
     </distributionManagement>
