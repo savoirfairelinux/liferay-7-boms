@@ -6,6 +6,34 @@
     <packaging>pom</packaging>
     <name>Liferay 7 EE SP1 BOM</name>
     <description>Bill of materials for Liferay 7 EE SP1</description>
+    <url>https://github.com/savoirfairelinux/liferay-7-boms</url>
+
+    <licenses>
+        <license>
+            <name>LGPLv3</name>
+            <url>https://www.gnu.org/licenses/lgpl.html</url>
+        </license>
+    </licenses>
+
+    <organization>
+        <name>Savoir-faire Linux</name>
+        <url>https://savoirfairelinux.com</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <name>Nicolas Juneau</name>
+            <email>nicolas.juneau@savoirfairelinux.com</email>
+            <organization>Savoir-faire Linux</organization>
+            <organizationUrl>https://savoirfairelinux.com</organizationUrl>
+        </developer>
+        <developer>
+            <name>Samuel Hervé</name>
+            <email>samuel.herve@savoirfairelinux.com</email>
+            <organization>Savoir-faire Linux</organization>
+            <organizationUrl>https://savoirfairelinux.com</organizationUrl>
+        </developer>
+    </developers>
 
     <distributionManagement>
         <repository>
@@ -14,19 +42,15 @@
         </repository>
     </distributionManagement>
 
-    <organization>
-        <name>Savoir-faire Linux</name>
-    </organization>
-
     <issueManagement>
-        <system>gitlab</system>
-        <url>https://gitlab.savoirfairelinux.com/njuneau/liferay-7-boms</url>
+        <system>github</system>
+        <url>https://github.com/savoirfairelinux/liferay-7-boms/issues</url>
     </issueManagement>
 
     <scm>
-        <url>https://gitlab.savoirfairelinux.com/njuneau/liferay-7-boms</url>
-        <connection>https://gitlab.savoirfairelinux.com/njuneau/liferay-7-boms.git</connection>
-        <developerConnection>git@gitlab.savoirfairelinux.com:njuneau/liferay-7-boms.git</developerConnection>
+        <url>https://github.com/savoirfairelinux/liferay-7-boms</url>
+        <connection>scm:git:git://github.com/savoirfairelinux/liferay-7-boms.git</connection>
+        <developerConnection>scm:git:ssh://github.com:savoirfairelinux/liferay-7-boms.git</developerConnection>
     </scm>
 
     <properties>
